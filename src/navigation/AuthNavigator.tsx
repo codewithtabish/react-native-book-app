@@ -1,11 +1,11 @@
 // AuthNavigator.tsx
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import SplashScreen from "../auth/SplashScreen";
-import WelcomeScreen from "../auth/WelcomeScreen";
-import OnBoardScreen from "../auth/OnBoardScreen";
-import LoginScreen from "../auth/LoginScreen";
-import NavigationNames from "./navigationStrings";
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import SplashScreen from '../auth/SplashScreen';
+import WelcomeScreen from '../auth/WelcomeScreen';
+import OnBoardScreen from '../auth/OnBoardScreen';
+import LoginScreen from '../auth/LoginScreen';
+import NavigationNames from './navigationStrings';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +20,9 @@ const AuthNavigator = () => {
         component={SplashScreen}
       />
       <Stack.Screen
+        options={{
+          presentation: 'modal',
+        }}
         name={NavigationNames.Auth.WelcomeScreen}
         component={WelcomeScreen}
       />

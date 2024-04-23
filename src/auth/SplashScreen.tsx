@@ -1,7 +1,7 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as MySplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import ThemedContainer from '../components/ThemedContainer';
 import { images } from '../constants';
 import {
@@ -9,9 +9,6 @@ import {
   responsiveScreenHeight,
   responsiveScreenWidth,
 } from 'react-native-responsive-dimensions';
-
-// Keep the splash screen visible while we fetch resourcesMy
-MySplashScreen.preventAutoHideAsync();
 
 const SplashScreen = ({ navigation }: any) => {
   const [fontsLoaded, error] = useFonts({
@@ -27,28 +24,35 @@ const SplashScreen = ({ navigation }: any) => {
   });
 
   useEffect(() => {
-    if (error) throw error;
+    const loadFonts = async () => {
+      try {
+        await MySplashScreen.preventAutoHideAsync();
+        await Promise.all([
+          /* load fonts asynchronously */
+        ]);
+        await MySplashScreen.hideAsync();
+      } catch (e) {
+        // Handle font loading error
+        console.error(e);
+      }
+    };
 
-    if (fontsLoaded) {
-      MySplashScreen.hideAsync();
+    loadFonts();
+  }, []);
+
+  useEffect(() => {
+    if (fontsLoaded && !error) {
+      const timeout = setTimeout(() => {
+        navigation.navigate('WelcomeScreen');
+      }, 3000);
+
+      return () => clearTimeout(timeout);
     }
-  }, [fontsLoaded, error]);
+  }, [fontsLoaded, error, navigation]);
 
   if (!fontsLoaded) {
     return null;
   }
-
-  if (!fontsLoaded && !error) {
-    return null;
-  }
-
-  useEffect(() => {
-    if (fontsLoaded && !error) {
-      setTimeout(() => {
-        navigation.navigate('WelcomeScreen');
-      }, 3000);
-    }
-  }, []);
 
   return (
     <ThemedContainer>
