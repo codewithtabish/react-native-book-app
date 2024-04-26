@@ -1,5 +1,5 @@
 import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useRef } from 'react';
 import { ThemeProvider } from '@react-navigation/native';
 import ThemedContainer from '../components/ThemedContainer';
 import { images } from '../constants';
@@ -10,8 +10,11 @@ import {
 } from 'react-native-responsive-dimensions';
 import CustomButton from '../components/CustomButton';
 import NavigationNames from '../navigation/navigationStrings';
+import LottieView from 'lottie-react-native';
 
 const WelcomeScreen = ({ navigation }: any) => {
+  const animation = useRef<any>(null);
+
   const handleGoToOnBoarding = () => {
     console.log('ess');
     navigation.navigate(NavigationNames.Auth.OnboardingScreen);
@@ -19,15 +22,18 @@ const WelcomeScreen = ({ navigation }: any) => {
   return (
     <ThemedContainer>
       <View className='flex-1 justify-center items-center'>
-        <Image
-          className='resize-cover  resize-contain'
-          source={images.book}
+        <LottieView
+          autoPlay
+          ref={animation}
           style={{
             width: responsiveScreenWidth(70),
             height: responsiveScreenHeight(35),
+            backgroundColor: '#161622',
           }}
-          resizeMode='contain'
+          // Find more Lottie files at https://lottiefiles.com/featured
+          source={require('../../assets/anim/booktwo.json')}
         />
+
         <View className='mx-8'>
           <Text
             className='text-secondary-200 font-pbold '

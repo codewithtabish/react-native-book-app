@@ -13,7 +13,12 @@ import OnBoardCustomButton from '../components/ObBoardCustomButton';
 import Pagination from '../components/Pagination';
 import data from '../constants/data';
 import ThemedContainer from '../components/ThemedContainer';
-import { responsiveScreenFontSize } from 'react-native-responsive-dimensions';
+import {
+  responsiveScreenFontSize,
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+} from 'react-native-responsive-dimensions';
+import LottieView from 'lottie-react-native';
 
 const OnboardingScreen = () => {
   const { width: SCREEN_WIDTH } = useWindowDimensions();
@@ -90,7 +95,18 @@ const OnboardingScreen = () => {
     });
     return (
       <View style={[styles.itemContainer, { width: SCREEN_WIDTH }]}>
-        <Animated.Image source={item.image} style={imageAnimationStyle} />
+        <LottieView
+          autoPlay
+          // ref={animation}
+          style={{
+            width: responsiveScreenWidth(80),
+            height: responsiveScreenHeight(50),
+            backgroundColor: '#161622',
+          }}
+          // Find more Lottie files at https://lottiefiles.com/featured
+          source={item?.image}
+        />
+        {/* <Animated.Image source={item.image} style={imageAnimationStyle} /> */}
         <Animated.View style={textAnimationStyle}>
           <Text
             className='font-pblack text-white text-center '
