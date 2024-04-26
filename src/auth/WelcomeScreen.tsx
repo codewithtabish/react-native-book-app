@@ -9,8 +9,13 @@ import {
   responsiveScreenWidth,
 } from 'react-native-responsive-dimensions';
 import CustomButton from '../components/CustomButton';
+import NavigationNames from '../navigation/navigationStrings';
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ navigation }: any) => {
+  const handleGoToOnBoarding = () => {
+    console.log('ess');
+    navigation.navigate(NavigationNames.Auth.OnboardingScreen);
+  };
   return (
     <ThemedContainer>
       <View className='flex-1 justify-center items-center'>
@@ -37,7 +42,11 @@ const WelcomeScreen = () => {
             Inspiration
           </Text>
         </View>
-        <CustomButton title={'GET STARTED'} containerStyles={`w-[80%] mt-12`} />
+        <CustomButton
+          title={'GET STARTED'}
+          containerStyles={`w-[80%] mt-12`}
+          handlePress={handleGoToOnBoarding}
+        />
       </View>
     </ThemedContainer>
   );

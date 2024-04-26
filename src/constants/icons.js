@@ -14,6 +14,7 @@ import play from "../../assets/icons/play.png";
 import apple from "../../assets/icons/apple.png";
 import facebook from "../../assets/icons/facebook.png";
 import google from "../../assets/icons/google.png";
+import onBoardArrow from "../../assets/icons/onboard-arrow.png";
 
 
 export default {
@@ -32,5 +33,6 @@ export default {
   eye,
   apple,
   facebook,
-  google
+  google,
+  onBoardArrow
 };

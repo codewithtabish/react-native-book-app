@@ -1,11 +1,17 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import ThemedContainer from '../components/ThemedContainer';
 
 const LoginScreen = () => {
   return (
-    <View>
-      <Text>LoginScreen</Text>
-    </View>
+    <ThemedContainer>
+      <Text className='text-white m-8 '>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam
+        laborum iste tempora maxime sint doloremque ex eius officia, quam
+        placeat voluptatem asperiores animi excepturi non, doloribus sunt amet
+        quia velit?
+      </Text>
+    </ThemedContainer>
   );
 };
 
