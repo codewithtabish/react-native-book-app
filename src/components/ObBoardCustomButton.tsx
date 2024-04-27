@@ -62,7 +62,7 @@ const OnBoardCustomButton = ({
         } else {
           console.log('here I am');
           navigation.navigate(
-            'SignInScreen' as keyof typeof NavigationNames.Auth as any,
+            'socialAccountScreen' as keyof typeof NavigationNames.Auth as any,
           );
 
           // navigation.navigate("" as any);

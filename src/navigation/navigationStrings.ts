@@ -7,6 +7,7 @@ const NavigationNames = {
     OnboardingScreen: 'OnboardingScreen',
     SignInScreen: 'SignInScreen',
     SignUpScreen: 'SignUpScreen',
+    SocialAccountScreen: 'socialAccountScreen',
   },
 
   // Main Screens

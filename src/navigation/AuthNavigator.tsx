@@ -6,6 +6,8 @@ import WelcomeScreen from '../auth/WelcomeScreen';
 import OnBoardScreen from '../auth/OnBoardScreen';
 import LoginScreen from '../auth/LoginScreen';
 import NavigationNames from './navigationStrings';
+import SignUpScreen from '../auth/SignUpScreen';
+import SocialAccountScreen from '../auth/SocialAccountLogin';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +35,14 @@ const AuthNavigator = () => {
       <Stack.Screen
         name={NavigationNames.Auth.SignInScreen}
         component={LoginScreen}
+      />
+      <Stack.Screen
+        name={NavigationNames.Auth.SignUpScreen}
+        component={SignUpScreen}
+      />
+      <Stack.Screen
+        name={NavigationNames.Auth.SocialAccountScreen}
+        component={SocialAccountScreen}
       />
     </Stack.Navigator>
   );
